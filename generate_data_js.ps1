@@ -16,8 +16,9 @@ if (-not (Test-Path $image_base_dir)) {
 
 Write-Host "Searching for images in '$image_base_dir' directory..."
 
-# Recursively search for all JPG files under image_base_dir
-Get-ChildItem -Path $image_base_dir -Recurse -Include *.jpg | ForEach-Object {
+# Recursively search for all JPG and WEBP files under image_base_dir
+# -Include パラメータに複数の拡張子を指定
+Get-ChildItem -Path $image_base_dir -Recurse -Include *.jpg, *.webp | ForEach-Object {
     $file_path = $_.FullName
     $file_name = $_.Name
     
